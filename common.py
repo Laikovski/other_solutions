@@ -71,3 +71,29 @@ second_set = frozenset({7,8,9,2,6})
 print(new_set.union(second_set))
 # 4. Выполнить операцию пересечения созданных множеств
 print(new_set.intersection(second_set))
+
+####################################################################
+"""Ваша цель — написать функцию, которая находит недостающие буквы английского алфавита. 
+На вход идут только символы английского языка в нижнем регистре. Возвращаемое значение — строка из недостающих символов.
+Пример:
+findmissingletters('abc') -> defghijklmnopqrstuvwxyz
+findmissingletters('mnopqrstuvwxyz') -> abcdefghijkl
+findmissingletters('acegikmoqsuwy') -> bdfhjlnprtvxz"""
+
+from string import ascii_lowercase
+#1
+
+# def  findmissingletters(letters):
+#   res = ''
+#   for i in ascii_lowercase:
+#     if i not in letters:
+#       res += i
+#   return res
+
+# 2
+def findmissingletters(l):
+  return ''.join(filter(lambda x: x not in l.lower(), ascii_lowercase))
+
+print(findmissingletters('abc'))
+print(findmissingletters('mnopqrstuvwxyz'))
+print(findmissingletters('acegikmoqsuwy'))
