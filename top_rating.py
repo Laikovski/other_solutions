@@ -10,3 +10,4 @@ def top_rating(student):
     return {'name':student['name'], 'top_note' : max(student['notes'])}
 
 top_rating({ "name": "John", "notes": [3, 5, 4] })
+

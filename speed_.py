@@ -19,3 +19,4 @@ print(time_saved(80, 90, 40))
 print(time_saved(80, 90, 4000))
 print(time_saved(80, 100, 40 ))
 print(time_saved(80, 100, 10))
+
