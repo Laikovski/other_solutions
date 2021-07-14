@@ -16,7 +16,7 @@ def increasing(arr):
             return False
     else: return True
 
-print(increasing([-1, 0, 1, 2, 3]))
+print(increasing([-1, 0, 1, 2, 6]))
 print(increasing([-1, 0, 1, 3, 4]))
 print(increasing([0, 1]))
 print(increasing([1, 0]))
