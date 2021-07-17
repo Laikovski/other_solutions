@@ -225,10 +225,161 @@ class Zebra:
             print("Полоска черная")
             self.count += 1
 
-z1 = Zebra()
-z1.which_stripe() # печатает "Полоска белая"
-z1.which_stripe() # печатает "Полоска черная"
-z1.which_stripe() # печатает "Полоска белая"
+# z1 = Zebra()
+# z1.which_stripe() # печатает "Полоска белая"
+# z1.which_stripe() # печатает "Полоска черная"
+# z1.which_stripe() # печатает "Полоска белая"
+#
+# z2 = Zebra()
+# z2.which_stripe() # печатает "Полоска белая"
 
-z2 = Zebra()
-z2.which_stripe() # печатает "Полоска белая"
+"""
+
+ Создайте класс Person, у которого есть:
+
+    конструктор __init__, принимающий 3 аргумента: first_name, last_name, age. 
+    метод full_name, который возвращает строку в виде "<Фамилия> <Имя>"
+    метод is_adult, который возвращает True, если человек достиг 18 лет и False в противном случае;
+
+"""
+class Person:
+
+    def __init__(self, first_name, last_name, age):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
+
+    def full_name(self):
+        return f'{self.last_name} {self.first_name}'
+
+    def is_adult(self):
+        if self.age >= 18:
+            return True
+        else:
+            return False
+
+# p1 = Person('Jimi', 'Hendrix', 17)
+# print(p1.full_name())  # выводит "Hendrix Jimi"
+# print(p1.is_adult()) # выводит "True"
+
+"""
+ Создайте класс Dog, у которого есть:
+
+    конструктор __init__, принимающий 2 аргумента: name, age. 
+    метод description, который возвращает строку в виде "<name> is <age> years old"
+    метод speak принимающий один аргумент, который возвращает строку вида "<name> says <sound>";
+
+"""
+
+class Dog:
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def description(self):
+        return f"{self.name} is {self.age} years old"
+
+    def speak(self, sound):
+        return f"{self.name} says {sound}"
+jack = Dog("Jack", 4)
+
+# print(jack.description()) # распечатает 'Jack is 4 years old'
+# print(jack.speak("Woof Woof")) # распечатает 'Jack says Woof Woof'
+# print(jack.speak("Bow Wow")) # распечатает 'Jack says Bow Wow'
+
+"""
+Ваша задача реализовать класс Stack, у которого есть:
+
+    - метод __init__  создаёт новый пустой стек. Параметры данный метод не принимает. Создает атрибут 
+    экземпляра values, где будут в дальнейшем хранятся элементы стека в виде списка (list), 
+    изначально при инициализации задайте значение атрибуту values равное пустому списку;
+    - метод push(item) добавляет новый элемент на вершину стека, метод ничего не возвращает.
+    - метод pop() удаляет верхний элемент из стека. Параметры не требуются, метод возвращает элемент. 
+    Стек изменяется. Если пытаемся удалить элемент из пустого списка, необходимо вывести сообщение 
+    "Empty Stack";
+    - метод peek() возвращает верхний элемент стека, но не удаляет его. Параметры не требуются, 
+    стек не модифицируется. Если элементов в стеке нет, распечатайте сообщение "Empty Stack", 
+    верните None после этого;
+    - метод is_empty() проверяет стек на пустоту. Параметры не требуются, возвращает булево значение.
+    - метод size() возвращает количество элементов в стеке. Параметры не требуются, тип результата - целое число.
+
+
+"""
+class Stack:
+
+    def __init__(self):
+        self.values = []
+
+    def push(self, item):
+        self.values.append(item)
+
+    def pop(self):
+        if len(self.values) == 0:
+            return 'Empty Stack'
+        else:
+            return self.values.pop()
+
+    def peek(self):
+        if len(self.values) == 0:
+            print('Empty Stack')
+        else:
+            return self.values[-1]
+
+    def is_empty(self):
+        if len(self.values) == 0:
+            return True
+        else:
+            return False
+
+    def size(self):
+        return len(self.values)
+# s = Stack()
+# s.peek()  # распечатает 'Empty Stack'
+# print(s.is_empty())  # распечатает True
+# s.push('cat')  # кладем элемент 'cat' на вершину стека
+# s.push('dog')  # кладем элемент 'dog' на вершину стека
+# print(s.peek())  # распечатает 'dog'
+# s.push(True)  # кладем элемент True на вершину стека
+# print(s.size())  # распечатает 3
+# print(s.is_empty())  # распечатает False
+# s.push(777)  # кладем элемент 777 на вершину стека
+# print(s.pop())  # удаляем элемент 777 с вершины стека и печатаем его
+# print(s.pop())  # удаляем элемент True с вершины стека и печатаем его
+# print(s.size())  # распечатает 2
+
+"""
+Создайте класс UserMail, у которого есть:
+
+    конструктор __init__, принимающий 2 аргумента: логин и почтовый адрес. Их необходимо сохранить в экземпляр 
+    как атрибуты login и __email (обратите внимание, защищенный атрибут)
+    метод геттер get_email, которое возвращает защищенный атрибут __email ;
+    метод сеттер set_email, которое принимает в виде строки новую почту. Метод должен проверять, что в новой почте 
+    есть только один символ @ и после нее есть точка. Если данные условия выполняются, новая почта сохраняется в 
+    атрибут __email, в противном случае выведите сообщение "Ошибочная почта";
+    создайте свойство email, у которого геттером будет метод get_email, а сеттером - метод set_email
+
+"""
+
+class UserMail:
+
+    def __init__(self, login, email):
+        self.login = login
+        self.__email = email
+
+    def get_email(self):
+        return f'{self.__email}'
+
+    def set_email(self, new_email):
+        if isinstance(new_email, str) and new_email.count('@') == 1 and '.' in new_email[new_email.find('@'):]:
+            self.__email = new_email
+        else:
+            print("Ошибочная почта")
+    email = property(fget=get_email, fset=set_email)
+
+k = UserMail('belosnezhka', 'prince@wait.you')
+print(k.email)  # prince@wait.you
+k.email = [1, 2, 3] # Ошибочная почта
+k.email = 'prince@still@.wait'  # Ошибочная почта
+k.email = 'prince@still.wait'
+print(k.email)  # prince@still.wait
