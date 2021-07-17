@@ -14,9 +14,9 @@ def fibo(num):
     f1 = 1
     f2 = 1
     print(f1, f2, end=' ')
-    for i in range(2, num):
+    for i in range(2, num + 1):
         f1, f2 = f2, f1 + f2
 
         print(f2, end=' ')
-
+    print(f'\nnum fibo {f2}')
 fibo(60)
