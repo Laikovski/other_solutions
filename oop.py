@@ -453,12 +453,164 @@ class Square:
     def area(self):
         if self.__p is None:
             print('calc')
-            self.__p = self.side ** 2
+            self.__p = self.side * 4
         return self.__p
 
 
-s = Square(4)
-print(s.area)
-s.side = 2
-print(s.area)
-print(s.area)
+# s = Square(4)
+# print(s.area)
+# s.side = 2
+# print(s.area)
+# print(s.area)
+
+"""Создайте класс Robot, у которого есть:
+
+    атрибут класса population. В этом атрибуте будет хранится общее количество роботов, изначально принимает значение 0;
+    конструктор __init__, принимающий 1 аргумент name. Данный метод должен сохранять атрибут name и печатать сообщение вида 
+    "Робот <name> был создан". Помимо инициализации робота данный метод должен увеличивать популяцию роботов на единицу;
+    метод destroy, должен уменьшать популяцию роботов на единицу и печатать сообщение вида "Робот <name> был уничтожен"
+    метод say_hello, которой печатает сообщение вида "Робот <name> приветствует тебя, особь человеческого рода"
+    метод класса  how_many, который печатает сообщение вида "<population>, вот сколько нас еще осталось"""
+
+class Robot:
+
+    population = 0
+
+    def __init__(self, name):
+        self.name = name
+        print(f'Робот {self.name} был создан')
+        Robot.population += 1
+
+    def destroy(self):
+        Robot.population -= 1
+        print(f"Робот {self.name} был уничтожен")
+
+    def say_hello(self):
+        print(f'Робот {self.name} приветствует тебя, особь человеческого рода')
+
+    @classmethod
+    def how_many(cls):
+        print(f'{cls.population}, вот сколько нас еще осталось')
+
+# r2 = Robot("R2-D2") # печатает "Робот R2-D2 был создан"
+# r2.say_hello() # печатает "Робот R2-D2 приветствует тебя, особь человеческого рода"
+# Robot.how_many() # печатает "1, вот сколько нас еще осталось"
+# r2.destroy() # печатает "Робот R2-D2 был уничтожен"
+
+
+
+
+"""Создайте класс Person, у которого есть:
+
+    конструктор __init__, принимающий 3 аргумента: name, surname, gender. Атрибут gender может принимать только 2 значения:
+    "male" и "female", по умолчанию "male". Если в атрибут gender передается любое другое значение, печатать сообщение: 
+    "Не знаю, что вы имели ввиду? Пусть это будет мальчик!" и проставить атрибут gender значением "male"
+    переопределить метод __str__ следующим образом: 
+        если объект - мужчина (атрибут gender = "male"), возвращать строку "Гражданин <Фамилия> <Имя>
+        если объект - женщина (атрибут gender = "female"), возвращать строку "Гражданка <Фамилия> <Имя>"""
+
+
+
+class Person:
+
+    def __init__(self, name, surname, gender='male'):
+        self.name = name
+        self.surname = surname
+
+        if gender not in ('male', 'female'):
+            self.gender = 'male'
+            print('Не знаю, что вы имели ввиду? Пусть это будет мальчик!')
+        else:
+            self.gender = gender
+
+    def __str__(self):
+        if self.gender == 'male':
+            return f'Гражданин {self.surname} {self.name}'
+        if self.gender == 'female':
+            return f'Гражданка {self.surname} {self.name}'
+
+
+# p1 = Person('Chuck', 'Norris')
+# print(p1) # печатает "Гражданин Norris Chuck"
+# p2 = Person('Mila', 'Kunis', 'female')
+# print(p2) # печатает "Гражданка Kunis Mila"
+# p3 = Person('Оби-Ван', 'Кеноби', True)# печатает "Не знаю, что вы имели ввиду? Пусть это будет мальчик!"
+# print(p3) # печатает "Гражданин Кеноби Оби-Ван"
+
+
+
+class Vector:
+    def __init__(self, *args):
+        self.values = []
+        for i in args:
+            if isinstance(i, int):
+                self.values.append(i)
+
+    def __str__(self):
+        if len(self.values) > 0:
+            self.values.sort()
+            self.values = tuple(self.values)
+            return f'Вектор{"".join(str(self.values))}'
+        else:
+            return 'Пустой вектор'
+
+# v1 = Vector(1, 2, 3)
+# print(v1)  # печатает "Вектор(1, 2, 3)"
+# v2 = Vector()
+# print(v2)  # печатает "Пустой вектор"
+"""
+магического  метода __eq__, который будет позволять сравнивать экземпляры класса ChessPlayer с числами и другими
+экземплярами этого класса. Если сравнение происходит с целым числом и атрибут rating с ним совпадает, 
+то необходимо вернуть True, в противном случае - False. Если же сравнение идет с другим шахматистом(экземпляром класса ChessPlayer)
+и значения атрибутов rating равны, то возвращается True, в противном случае - False. А если же сравнивается с другим 
+типом данных, верните ‘Невозможно выполнить сравнение’;
+"""
+
+class ChessPlayer:
+    def __init__(self, name, surname, rating):
+        self.name = name
+        self.surname = surname
+        self.rating = rating
+
+    def __eq__(self, other):
+        if isinstance(other, (int, float)):
+            return self.rating == other
+
+        if isinstance(other, ChessPlayer):
+            return self.rating == other.rating
+
+    def __lt__(self, other):
+        if isinstance(other, ChessPlayer):
+            return self.rating < other.rating
+
+        if isinstance(other, (int, float)):
+            return int(self.rating) < other
+
+        if not isinstance(other, ChessPlayer):
+            return 'Невозможно выполнить сравнениe'
+
+    def __gt__(self, other):
+        if isinstance(other, int):
+            if other < self.rating:
+                return True
+            else:
+                return False
+        elif isinstance(other, ChessPlayer):
+            if other < self.rating:
+                return True
+            else:
+                return False
+        else:
+            return print('Невозможно выполнить сравнение')
+
+
+
+magnus = ChessPlayer('Carlsen', 'Magnus', 2847)
+ian = ChessPlayer('Ian', 'Nepomniachtchi', 2789)
+# print(magnus == 4000) # False
+# print(ian == 2789) # True
+# print(magnus == ian) # False
+# print(magnus > ian) # True
+# print(magnus < ian) # False
+# print(magnus < [1, 2]) # печатает "Невозможно выполнить сравнениe"
+print(magnus > 400) # True
