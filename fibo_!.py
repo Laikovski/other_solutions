@@ -20,3 +20,11 @@ def fibo(num):
         print(f2, end=' ')
     print(f'\nnum fibo {f2}')
 fibo(60)
+
+
+def count(num):
+    if num <= 2:
+        return 1
+    return count(num-1) + count(num-2)
+
+print(count(10))

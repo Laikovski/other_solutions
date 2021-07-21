@@ -605,12 +605,85 @@ class ChessPlayer:
 
 
 
-magnus = ChessPlayer('Carlsen', 'Magnus', 2847)
-ian = ChessPlayer('Ian', 'Nepomniachtchi', 2789)
-# print(magnus == 4000) # False
-# print(ian == 2789) # True
-# print(magnus == ian) # False
-# print(magnus > ian) # True
-# print(magnus < ian) # False
-# print(magnus < [1, 2]) # печатает "Невозможно выполнить сравнениe"
-print(magnus > 400) # True
+
+"""Создайте класс City, у которого есть:
+
+    конструктор __init__, принимающий единственный аргумент - название города. Вам необходимо сохранить его в 
+    качестве атрибута экземпляра name, причем вам нужно преобразовать переданное имя города таким образом, 
+    чтобы первая буква каждого слова была заглавной, а остальные оказались строчными 
+    (пример "new york" - > "New York")
+    переопределить метод __str__ таким образом, чтобы он возвращал имя города
+    переопределить метод __bool__ так, чтобы он возвращал False ,если название города заканчивается на 
+    любую гласную букву латинского алфавита (a, e, i, o, u), в противном случае True"""
+
+class City:
+
+    def __init__(self, name):
+        self.name = name.title()
+
+    def __str__(self):
+       return self.name
+
+    def __bool__(self):
+        return self.name[-1] not in ('a', 'e', 'i', 'o', 'u')
+
+
+# p1 = City('new york')
+# print(p1)  # печатает "New York"
+# print(bool(p1))  # печатает "True"
+# p2 = City('SaN frANCISco')
+# print(p2)  # печатает "San Francisco"
+# print(p2 == True)  # печатает "False"
+
+
+
+# Сейчас вам нужно создать класс Quadrilateral (четырехугольник), в котором есть:
+#
+#     конструктор __init__. Он должен сохранять в экземпляр класса два атрибута: width и height. При этом в сам метод __init__
+#     может передаваться один аргумент(тогда в width и height присваивать это одно одинаковое значение, тем самым делать квадрат),
+#     либо два аргумента( первый идет в атрибут width, второй - в height)
+#     переопределить метод __str__ следующим образом:
+#         если width и height одинаковые, возвращать строку "Куб размером <width>х<height>
+#         в противном случае, возвращать строку "Прямоугольник размером <width>х<height>
+#     переопределить метод __bool__ так, чтобы он возвращал True, если объект является кубом, и False в противном случае
+
+class Quadrilateral:
+
+    def __init__(self, width, height=None):
+        if height is None:
+            self.height = width
+        else:
+            self.height = height
+        self.width = width
+
+    def __str__(self):
+        if self.height == self.width:
+            return f'Куб размером {self.width}х{self.height}'
+        else:
+            return f'Прямоугольник размером {self.width}х{self.height}'
+
+    def __bool__(self):
+        return self.width == self.height
+
+# q1 = Quadrilateral(10)
+# print(q1)  # печатает "Куб размером 10х10"
+# print(bool(q1))  # печатает "True"
+# q2 = Quadrilateral(3, 5)
+# print(q2)  # печатает "Прямоугольник размером 3х5"
+# print(q2 == True)  # печатает "False"
+
+def fibo(num):
+    f1 = 1
+    f2 = 1
+
+    print(f1, f2, end = ' ')
+
+    for i in range(2, num):
+        f1, f2 = f2, f2 + f1
+
+        print(f2, end=' ')
+
+    res = sum([int(x) for x in str(f2)])
+
+    print(res)
+fibo(10)
