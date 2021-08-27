@@ -22,9 +22,3 @@ def fibo(num):
 fibo(60)
 
 
-def count(num):
-    if num <= 2:
-        return 1
-    return count(num-1) + count(num-2)
-
-print(count(10))

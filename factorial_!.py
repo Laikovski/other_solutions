@@ -24,7 +24,64 @@ n! означает n × (n − 1) × … × 3 × 2 × 1
 #     f1 = 1
 #     for i in range(1, num + 1):
 #         f1 = f1 * i
-#     return sum(int(x) for x in str(f1))
+#     return f1
 #
 # print(fac_for(10))
 
+
+
+
+
+
+
+
+
+
+# def factorial(num):
+#     if num == 0 or num == 1:
+#         return 1
+#     return factorial(num-1) * num
+#
+# print(factorial(5))
+
+# def factorial(num):
+#     if num == 0 or num == 1:
+#         return 1
+#
+#     f1 = 1
+#     for i in range(1, num + 1):
+#         f1 *= i
+#
+#     return f1
+#
+# print(factorial(5))
+
+# def factorial(num):
+#
+#     res = 1
+#     while num > 0:
+#         res = res * num
+#         num -= 1
+#     return res
+#
+# print(factorial(1005))
+
+
+# def factorial(num):
+#     if num == [0,1]:
+#         return 1
+#     f1 = 1
+#     for i in range(1, num + 1):
+#         f1 *= i
+#
+#     return f1
+#
+# print(factorial(1))
+
+def factorial(num):
+    if num in [0,1]:
+        return 1
+
+    return factorial(num - 1) * num
+
+print(factorial(10))

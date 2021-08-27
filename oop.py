@@ -7,6 +7,7 @@
 
 """
 
+
 class Soda:
     def __init__(self, adding):
         if isinstance(adding, str):
@@ -14,12 +15,12 @@ class Soda:
         else:
             self.adding = None
 
-
     def show_my_drink(self):
         if self.adding:
             print(f'Газировка и {self.adding}')
         else:
             print('Обычна газировка')
+
 
 n = Soda('foo')
 k = Soda(None)
@@ -99,8 +100,6 @@ class KgToPounds:
 # weight.kg = 'десять'
 
 
-
-
 # Создайте класс Point. У этого класса должны быть метод set_coordinates, который принимает координаты по x и по y,
 # и сохраняет их в экземпляр класса соответственно в атрибуты x и y метод get_distance, который обязательно
 # принимает экземпляр класса Point и возвращает расстояние между двумя точками по теореме Пифагора.
@@ -118,6 +117,7 @@ class KgToPounds:
 
 
 import math
+
 
 class Point:
     def set_coordinates(self, x, y):
@@ -150,12 +150,15 @@ print(hp.laptop_name) # выводит "hp 15-bw0xx"
 
 И затем создайте 2 экземпляра класса Laptop и сохраните их в переменные laptop1 и laptop2.
 """
+
+
 class Laptop:
     def __init__(self, brand, model, price):
         self.brand = brand
         self.model = model
         self.price = price
         self.laptop_name = f'{self.brand} {self.model}'
+
 
 hp = Laptop('hp', '15-bw0xx', 57000)
 # print(hp.laptop_name) # выводит "hp 15-bw0xx"
@@ -181,6 +184,7 @@ hp = Laptop('hp', '15-bw0xx', 57000)
 
 """
 
+
 class SoccerPlayer:
 
     def __init__(self, name, username, goals=0, assists=0):
@@ -189,10 +193,10 @@ class SoccerPlayer:
         self.goals = goals
         self.assists = assists
 
-    def score(self, goals = 1):
+    def score(self, goals=1):
         self.goals += goals
 
-    def make_assist(self, assists = 1):
+    def make_assist(self, assists=1):
         self.assists += assists
 
     def statistics(self):
@@ -214,9 +218,11 @@ class SoccerPlayer:
 
 """
 
+
 class Zebra:
     def __init__(self, count=0):
         self.count = count
+
     def which_stripe(self):
         if self.count % 2 == 0:
             print("Полоска белая")
@@ -224,6 +230,7 @@ class Zebra:
         else:
             print("Полоска черная")
             self.count += 1
+
 
 # z1 = Zebra()
 # z1.which_stripe() # печатает "Полоска белая"
@@ -242,6 +249,8 @@ class Zebra:
     метод is_adult, который возвращает True, если человек достиг 18 лет и False в противном случае;
 
 """
+
+
 class Person:
 
     def __init__(self, first_name, last_name, age):
@@ -258,6 +267,7 @@ class Person:
         else:
             return False
 
+
 # p1 = Person('Jimi', 'Hendrix', 17)
 # print(p1.full_name())  # выводит "Hendrix Jimi"
 # print(p1.is_adult()) # выводит "True"
@@ -271,6 +281,7 @@ class Person:
 
 """
 
+
 class Dog:
 
     def __init__(self, name, age):
@@ -282,6 +293,8 @@ class Dog:
 
     def speak(self, sound):
         return f"{self.name} says {sound}"
+
+
 jack = Dog("Jack", 4)
 
 # print(jack.description()) # распечатает 'Jack is 4 years old'
@@ -306,6 +319,8 @@ jack = Dog("Jack", 4)
 
 
 """
+
+
 class Stack:
 
     def __init__(self):
@@ -334,6 +349,8 @@ class Stack:
 
     def size(self):
         return len(self.values)
+
+
 # s = Stack()
 # s.peek()  # распечатает 'Empty Stack'
 # print(s.is_empty())  # распечатает True
@@ -361,6 +378,7 @@ class Stack:
 
 """
 
+
 class UserMail:
 
     def __init__(self, login, email):
@@ -375,7 +393,9 @@ class UserMail:
             self.__email = new_email
         else:
             print("Ошибочная почта")
+
     email = property(fget=get_email, fset=set_email)
+
 
 # k = UserMail('belosnezhka', 'prince@wait.you')
 # print(k.email)  # prince@wait.you
@@ -401,27 +421,33 @@ class UserMail:
 
 В экземпляр класса кроме атрибута total_cents сохранять ничего не нужно!"""
 
+
 class Money:
     def __init__(self, dollars, cents):
         self.total_cents = dollars * 100 + cents
+
     @property
     def dollars(self):
         return self.total_cents // 100
+
     @dollars.setter
     def dollars(self, value):
         if isinstance(value, int) and value >= 0:
-            self.total_cents = self.total_cents - self.total_cents //100*100 + value * 100
+            self.total_cents = self.total_cents - self.total_cents // 100 * 100 + value * 100
         else:
             print('Error dollars')
+
     @property
     def cents(self):
         return self.total_cents % 100
+
     @cents.setter
     def cents(self, value):
         if isinstance(value, int) and value >= 0:
             self.total_cents = self.total_cents - self.total_cents % 100 + int(value)
         else:
             print('Error cents')
+
     def __str__(self):
         return f'Ваше состояние составляет {self.total_cents // 100} долларов {self.total_cents % 100} центов'
 
@@ -440,6 +466,7 @@ class Square:
     def __init__(self, side):
         self.__side = side
         self.__p = None
+
     @property
     def side(self):
         return self.__side
@@ -472,8 +499,8 @@ class Square:
     метод say_hello, которой печатает сообщение вида "Робот <name> приветствует тебя, особь человеческого рода"
     метод класса  how_many, который печатает сообщение вида "<population>, вот сколько нас еще осталось"""
 
-class Robot:
 
+class Robot:
     population = 0
 
     def __init__(self, name):
@@ -492,12 +519,11 @@ class Robot:
     def how_many(cls):
         print(f'{cls.population}, вот сколько нас еще осталось')
 
+
 # r2 = Robot("R2-D2") # печатает "Робот R2-D2 был создан"
 # r2.say_hello() # печатает "Робот R2-D2 приветствует тебя, особь человеческого рода"
 # Robot.how_many() # печатает "1, вот сколько нас еще осталось"
 # r2.destroy() # печатает "Робот R2-D2 был уничтожен"
-
-
 
 
 """Создайте класс Person, у которого есть:
@@ -508,7 +534,6 @@ class Robot:
     переопределить метод __str__ следующим образом: 
         если объект - мужчина (атрибут gender = "male"), возвращать строку "Гражданин <Фамилия> <Имя>
         если объект - женщина (атрибут gender = "female"), возвращать строку "Гражданка <Фамилия> <Имя>"""
-
 
 
 class Person:
@@ -538,7 +563,6 @@ class Person:
 # print(p3) # печатает "Гражданин Кеноби Оби-Ван"
 
 
-
 class Vector:
     def __init__(self, *args):
         self.values = []
@@ -554,6 +578,7 @@ class Vector:
         else:
             return 'Пустой вектор'
 
+
 # v1 = Vector(1, 2, 3)
 # print(v1)  # печатает "Вектор(1, 2, 3)"
 # v2 = Vector()
@@ -565,6 +590,7 @@ class Vector:
 и значения атрибутов rating равны, то возвращается True, в противном случае - False. А если же сравнивается с другим 
 типом данных, верните ‘Невозможно выполнить сравнение’;
 """
+
 
 class ChessPlayer:
     def __init__(self, name, surname, rating):
@@ -604,8 +630,6 @@ class ChessPlayer:
             return print('Невозможно выполнить сравнение')
 
 
-
-
 """Создайте класс City, у которого есть:
 
     конструктор __init__, принимающий единственный аргумент - название города. Вам необходимо сохранить его в 
@@ -616,13 +640,14 @@ class ChessPlayer:
     переопределить метод __bool__ так, чтобы он возвращал False ,если название города заканчивается на 
     любую гласную букву латинского алфавита (a, e, i, o, u), в противном случае True"""
 
+
 class City:
 
     def __init__(self, name):
         self.name = name.title()
 
     def __str__(self):
-       return self.name
+        return self.name
 
     def __bool__(self):
         return self.name[-1] not in ('a', 'e', 'i', 'o', 'u')
@@ -634,7 +659,6 @@ class City:
 # p2 = City('SaN frANCISco')
 # print(p2)  # печатает "San Francisco"
 # print(p2 == True)  # печатает "False"
-
 
 
 # Сейчас вам нужно создать класс Quadrilateral (четырехугольник), в котором есть:
@@ -665,6 +689,7 @@ class Quadrilateral:
     def __bool__(self):
         return self.width == self.height
 
+
 # q1 = Quadrilateral(10)
 # print(q1)  # печатает "Куб размером 10х10"
 # print(bool(q1))  # печатает "True"
@@ -672,18 +697,34 @@ class Quadrilateral:
 # print(q2)  # печатает "Прямоугольник размером 3х5"
 # print(q2 == True)  # печатает "False"
 
-def fibo(num):
-    f1 = 1
-    f2 = 1
 
-    print(f1, f2, end = ' ')
+"""Создайте класс NewInt, который унаследован от целого типа int, то есть мы будем унаследовать поведение целых чисел и
+значит экземплярам нашего класса будут поддерживать те же операции, что и целые числа.
 
-    for i in range(2, num):
-        f1, f2 = f2, f2 + f1
+Дополнительно в классе NewInt нужно создать:
 
-        print(f2, end=' ')
+    метод repeat, который принимает одно целое положительное число n (по умолчанию равное 2), 
+    обозначающее сколько раз нужно продублировать данное число. Метод repeat должен возвращать новое число,
+    продублированное n раз (см пример ниже);
+    метод to_bin, который возвращает двоичное представление числа в виде числа (может пригодиться функция bin)"""
 
-    res = sum([int(x) for x in str(f2)])
 
-    print(res)
-fibo(10)
+class NewInt(int):
+
+    def repeat(self, n=2):
+        return int(str(self) * n)
+
+    def to_bin(self):
+        return int(bin(self).lstrip('0b'))
+
+
+a = NewInt(9)
+print(a.repeat())  # печатает число 99
+d = NewInt(a + 5)
+print(d.repeat(3)) # печатает число 141414
+b = NewInt(NewInt(7) * NewInt(5))
+print(b.to_bin()) # печатает 100011 - двоичное представление числа 35
+
+# Кстати, как вы думаете, что вернет данный вызов NewInt() ?
+
+
